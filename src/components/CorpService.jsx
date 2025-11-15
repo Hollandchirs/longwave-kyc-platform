@@ -225,7 +225,7 @@ const CorpService = () => {
             <path d="M12 28C12 28 15 22 18 22C21 22 21 28 24 28C27 28 27 22 30 22C33 22 36 28 36 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.6" />
           </svg>
           <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-            Longwave
+            Longwaves
           </span>
         </button>
       </div>

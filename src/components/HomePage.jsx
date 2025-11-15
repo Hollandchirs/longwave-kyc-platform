@@ -74,14 +74,14 @@ const HomePage = () => {
           </div>
           
           {/* Company Name */}
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Longwave
-            </span>
-            <span className="text-xs text-gray-500 tracking-wider">
-              {language === 'zh' ? '企业出海服务平台' : 'Corporate Services'}
-            </span>
-          </div>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    Longwaves
+                  </span>
+                  <span className="text-xs text-gray-500 tracking-wider">
+                    {language === 'zh' ? '企业出海服务平台' : 'Corporate Services'}
+                  </span>
+                </div>
         </div>
       </div>
 
