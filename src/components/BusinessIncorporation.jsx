@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Plus, Trash2, CheckCircle, XCircle, Download, Clock } from 'lucide-react';
+import { ArrowLeft, Plus, Trash2, CheckCircle, XCircle, Download, Clock, RefreshCw } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 
@@ -145,6 +145,35 @@ const BusinessIncorporation = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleReset = () => {
+    if (window.confirm(language === 'zh' ? '确定要清除所有数据并重新开始吗？' : 'Are you sure you want to clear all data and start over?')) {
+      // 清除 localStorage
+      localStorage.removeItem('businessIncorporationData');
+      // 重置所有状态
+      setStep(1);
+      setCompanyName('');
+      setRegisteredCapital('');
+      setCompanyType('');
+      setRegisteredAddress('');
+      setDirectors([{
+        fullName: '',
+        passportNumber: '',
+        address: '',
+        phone: '',
+        email: ''
+      }]);
+      setShareholders([{
+        fullName: '',
+        passportNumber: '',
+        address: '',
+        phone: '',
+        email: ''
+      }]);
+      // 提示成功
+      alert(language === 'zh' ? '数据已清除，已恢复到初始状态' : 'Data cleared, restored to initial state');
+    }
   };
 
   const PersonForm = ({ person, index, type, onUpdate, onRemove, canRemove }) => (
@@ -571,8 +600,18 @@ const BusinessIncorporation = () => {
               </div>
             </div>
 
-            {/* Return Home Button */}
-            <div className="flex justify-center pt-6 border-t border-gray-200">
+            {/* Action Buttons */}
+            <div className="flex justify-center gap-4 pt-6 border-t border-gray-200">
+              {/* Reset Button */}
+              <button
+                onClick={handleReset}
+                className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors shadow-md hover:shadow-lg"
+              >
+                <RefreshCw className="w-5 h-5" />
+                {language === 'zh' ? '重新开始' : 'Start Over'}
+              </button>
+              
+              {/* Return Home Button */}
               <button
                 onClick={() => {
                   alert(language === 'zh' ? '注册流程完成！' : 'Incorporation process completed!');
